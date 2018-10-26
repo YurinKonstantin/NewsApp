@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:NewsApp"
+            x:Class="NewsApp.TabbedPageGlavnoe" Title="Главное">
+  <!--Pages can be added as references or inline-->
+
+    <local:Page24hors/>
+    <local:Page1 Title="Россия" />
+    <local:PageWorldAll Title="Мир"/>
+    <local:PageEconomicaAll Title="Экономика"/>
+    <local:PageSportAll Title="Спорт"/>
+</TabbedPage>
