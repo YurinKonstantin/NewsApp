@@ -29,7 +29,7 @@ namespace NewsApp
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            frame.IsVisible = false;
             if (Col1.Count <=1)
             {
            await Task.Run(() => zagruzka1(this.Title.ToString()));
@@ -109,7 +109,6 @@ namespace NewsApp
             }
 
         }
-
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {

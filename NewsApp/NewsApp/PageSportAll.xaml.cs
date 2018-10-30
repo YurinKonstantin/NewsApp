@@ -28,7 +28,7 @@ namespace NewsApp
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            frame.IsVisible = false;
             if (Col1.Count <= 1)
             {
                await Task.Run(() => zagruzka1(this.Title.ToString()));
@@ -114,59 +114,135 @@ namespace NewsApp
 
 
         }
+        RSSFeedItem note1 = new RSSFeedItem();
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            //Button button = (Button)sender;
-            //string ID = button.CommandParameter.ToString();
-            string action = await DisplayActionSheet("Действия", "Отмена", null, "Сохранить", "Открыть", "Прочесть");
-            if (action == null)
-                return;
+            note1 = null;
             BindableObject bindableObject = sender as BindableObject;
             if (bindableObject != null)
             {
-                RSSFeedItem note = bindableObject.BindingContext as RSSFeedItem;
-                if (action == "Сохранить")
-                {
-                    try
-                    {
-                        string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp.txt");
-                        bool doesExist = File.Exists(fileName);
-                        string text = null;
-                        if (doesExist == true)
-                        {
-                            text = File.ReadAllText(fileName);
-                        }
-
-
-                        text += note.Title.ToString() + "\t" + note.Description.ToString() + "\t" + note.Enclosure.ToString() + "\t" + note.Link + "\n";
-                        File.WriteAllText(fileName, text);
-                        DependencyService.Get<Interface1>().LongAlert("Cохранено");
-                    }
-                    catch (Exception ex)
-                    {
-                        await DisplayAlert("В файле ошибка ", ex.ToString(), "OK");
-                    }
-                }
-                else
-                {
-                    if (action == "Открыть")
-                    {
-                        if (note != null)
-
-                            if (note.Enclosure != null)
-                                //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));
-                                await Navigation.PushAsync(new PageWebView(note.Link));
-                    }
-                    if (action == "Прочесть")
-                    {
-                        DependencyService.Get<Interface1>().Speak(note.Description);
-                    }
-
-                }
+                note1 = bindableObject.BindingContext as RSSFeedItem;
             }
 
+            /*    string action = await DisplayActionSheet("Действия", "Отмена", null, "Сохранить", "Открыть", "Прочесть");
+                if (action == null)
+                    return;
+                BindableObject bindableObject = sender as BindableObject;
+                if (bindableObject != null)
+                {
+                    RSSFeedItem note = bindableObject.BindingContext as RSSFeedItem;
+                    if (action == "Сохранить")
+                    {
+                        try
+                        {
+                            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp.txt");
+                            bool doesExist = File.Exists(fileName);
+                            string text = null;
+                            if (doesExist == true)
+                            {
+                                text = File.ReadAllText(fileName);
+                            }
 
+
+                            text += note.Title.ToString() + "\t" + note.Description.ToString() + "\t" + note.Enclosure.ToString() + "\t" + note.Link + "\n";
+                            File.WriteAllText(fileName, text);
+                            DependencyService.Get<Interface1>().LongAlert("Cохранено");
+                        }
+                        catch (Exception ex)
+                        {
+                            await DisplayAlert("В файле ошибка ", ex.ToString(), "OK");
+                        }
+                    }
+                    else
+                    {
+                        if (action == "Открыть")
+                        {
+                            if (note != null)
+
+                                if (note.Enclosure != null)
+                                    //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));
+                                    await Navigation.PushAsync(new PageWebView(note.Link));
+                        }
+                        if(action=="Прочесть")
+                        {
+                            DependencyService.Get<Interface1>().Speak(note.Description);
+                        }
+
+                    }
+                }
+    */
+            frame.IsVisible = true;
+
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            frame.IsVisible = false;
+            note1 = null;
+        }
+
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp.txt");
+                bool doesExist = File.Exists(fileName);
+                string text = null;
+                if (doesExist == true)
+                {
+                    text = File.ReadAllText(fileName);
+                }
+
+
+                text += note1.Title.ToString() + "\t" + note1.Description.ToString() + "\t" + note1.Enclosure.ToString() + "\t" + note1.Link + "\n";
+                File.WriteAllText(fileName, text);
+                DependencyService.Get<Interface1>().LongAlert("Cохранено");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("В файле ошибка ", ex.ToString(), "OK");
+            }
+            finally
+            {
+                note1 = null;
+                frame.IsVisible = false;
+            }
+        }
+
+        private async void Button_Clicked_3(object sender, EventArgs e)
+        {
+            try
+            {
+                if (note1 != null)
+                    if (note1.Enclosure != null)
+                        await Navigation.PushAsync(new PageWebView(note1.Link));
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                frame.IsVisible = false;
+            }
+
+        }
+
+        private async void Button_Clicked_4(object sender, EventArgs e)
+        {
+            try
+            {
+                DependencyService.Get<Interface1>().Speak(note1.Description);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                frame.IsVisible = false;
+            }
         }
     }
 }

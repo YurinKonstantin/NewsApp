@@ -41,6 +41,9 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Frame x:Name="frame" BackgroundColor="#BC000000" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="0" IsVisible="False" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Button_Clicked_1"/>
+                </Frame.GestureRecognizers>
                 <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" BackgroundColor="Transparent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
