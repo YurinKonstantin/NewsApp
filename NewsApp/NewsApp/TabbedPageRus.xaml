@@ -4,7 +4,7 @@
             xmlns:local="clr-namespace:NewsApp"
             x:Class="NewsApp.TabbedPageRus">
   <!--Pages can be added as references or inline-->
-    <local:Page1 Title="Главное"/>
+    <local:PageRusAll Title="Главное"/>
     <local:PageRusPolitika Title="Политика" />
     <local:PageRusObshestvo Title="Общество" />
     <local:PageRusProischestvie  Title="Происшествия" />

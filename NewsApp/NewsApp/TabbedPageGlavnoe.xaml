@@ -6,7 +6,7 @@
   <!--Pages can be added as references or inline-->
 
     <local:Page24hors/>
-    <local:Page1 Title="Россия" />
+    <local:PageRusAll Title="Россия" />
     <local:PageWorldAll Title="Мир"/>
     <local:PageEconomicaAll Title="Экономика"/>
     <local:PageSportAll Title="Спорт"/>
