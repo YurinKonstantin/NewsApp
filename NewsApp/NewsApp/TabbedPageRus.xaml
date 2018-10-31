@@ -5,7 +5,7 @@
             x:Class="NewsApp.TabbedPageRus">
   <!--Pages can be added as references or inline-->
     <local:Page1 Title="Главное"/>
-    <local:Page1 Title="Политика" />
+    <local:PageRusPolitika Title="Политика" />
     <local:Page1 Title="Общество" />
     <local:Page1  Title="Происшествия" />
     <local:Page1 Title="Катастрофы" />
