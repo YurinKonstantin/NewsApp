@@ -6,7 +6,7 @@
   <!--Pages can be added as references or inline-->
     <local:Page1 Title="Главное"/>
     <local:PageRusPolitika Title="Политика" />
-    <local:Page1 Title="Общество" />
+    <local:PageRusObshestvo Title="Общество" />
     <local:Page1  Title="Происшествия" />
     <local:Page1 Title="Катастрофы" />
 </TabbedPage>

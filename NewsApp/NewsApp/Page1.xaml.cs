@@ -152,7 +152,7 @@ namespace NewsApp
                         {
 
 
-                            rSSFeedItems = await Task.Run(() => (MyComande.zagruzka1(new ClassIstochnik() { Urr = @"https://www.vedomosti.ru/rss/issue", Istochnik = "rambler.ru" }, metrics.Width)));
+                            rSSFeedItems = await Task.Run(() => (MyComande.zagruzka1(new ClassIstochnik() { Urr = @"https://www.vedomosti.ru/rss/issue", Istochnik = "vedomosti.ru" }, metrics.Width)));
                             int poz = 0;
                             if (rSSFeedItems.Count != 0)
                             {
