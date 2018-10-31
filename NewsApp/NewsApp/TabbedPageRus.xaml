@@ -7,6 +7,6 @@
     <local:Page1 Title="Главное"/>
     <local:PageRusPolitika Title="Политика" />
     <local:PageRusObshestvo Title="Общество" />
-    <local:Page1  Title="Происшествия" />
-    <local:Page1 Title="Катастрофы" />
+    <local:PageRusProischestvie  Title="Происшествия" />
+    <local:PageRusKatastrofa Title="Катастрофы" />
 </TabbedPage>
