@@ -125,12 +125,14 @@ namespace NewsApp
                     }
                     if (d == 0)
                     {
+                        Col1.Clear();
                         Col1.Add(new RSSFeedItem() { Title = "Новостей по данной теме нет", Description = "Потяните вниз по списку данных что бы обновить.", ButShow = false, FigShow = false });
 
                     }
                 }
                 else
                 {
+                    Col1.Clear();
                     Col1.Add(new RSSFeedItem() { Title = "Подключение к сети интернет ограничено или отсутствует", Description = "Потяните вниз по списку данных что бы обновить.", ButShow = false, FigShow = false });
 
                 }

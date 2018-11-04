@@ -45,11 +45,15 @@ namespace NewsApp
             //make sure to end the refresh state
             list.IsRefreshing = false;
         }
+        double x=0;
+        bool up=false;
+    
         public async Task zagruzka1(string titlestring)
         {
-
+         
             try
             {
+                
                 var current = Connectivity.NetworkAccess;
 
                 if (current == NetworkAccess.Internet)
@@ -132,53 +136,7 @@ namespace NewsApp
                 note1 = bindableObject.BindingContext as RSSFeedItem;
             }
 
-            /*    string action = await DisplayActionSheet("Действия", "Отмена", null, "Сохранить", "Открыть", "Прочесть");
-                if (action == null)
-                    return;
-                BindableObject bindableObject = sender as BindableObject;
-                if (bindableObject != null)
-                {
-                    RSSFeedItem note = bindableObject.BindingContext as RSSFeedItem;
-                    if (action == "Сохранить")
-                    {
-                        try
-                        {
-                            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp.txt");
-                            bool doesExist = File.Exists(fileName);
-                            string text = null;
-                            if (doesExist == true)
-                            {
-                                text = File.ReadAllText(fileName);
-                            }
-
-
-                            text += note.Title.ToString() + "\t" + note.Description.ToString() + "\t" + note.Enclosure.ToString() + "\t" + note.Link + "\n";
-                            File.WriteAllText(fileName, text);
-                            DependencyService.Get<Interface1>().LongAlert("Cохранено");
-                        }
-                        catch (Exception ex)
-                        {
-                            await DisplayAlert("В файле ошибка ", ex.ToString(), "OK");
-                        }
-                    }
-                    else
-                    {
-                        if (action == "Открыть")
-                        {
-                            if (note != null)
-
-                                if (note.Enclosure != null)
-                                    //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));
-                                    await Navigation.PushAsync(new PageWebView(note.Link));
-                        }
-                        if(action=="Прочесть")
-                        {
-                            DependencyService.Get<Interface1>().Speak(note.Description);
-                        }
-
-                    }
-                }
-    */
+           
             frame.IsVisible = true;
 
         }
@@ -251,5 +209,7 @@ namespace NewsApp
                 frame.IsVisible = false;
             }
         }
+
+
     }
 }

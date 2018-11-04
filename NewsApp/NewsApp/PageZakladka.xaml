@@ -28,7 +28,7 @@
                                         </Frame>
                                         <Label Grid.Row="1"  TextColor="Black" Text="{Binding Title}" FontAttributes="Bold"  FontFamily="Arial" FontSize="Medium" HorizontalOptions="Start" LineBreakMode="CharacterWrap" />
                                         <Label Grid.Row="2"  Text="{Binding Description}" FontFamily="Arial" TextColor="Black" FontSize="Small" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap" VerticalTextAlignment="End" />
-                                        <Button Grid.Row="3" Margin="0,-8,-4,0" HorizontalOptions="End" BackgroundColor="Transparent" CommandParameter="{Binding Title}" Clicked="Button_Clicked"   TextColor="Red" Image="outline_delete_black_18.png"/>
+                                        <Button Grid.Row="3" Margin="0,-8,-4,0" HorizontalOptions="End" BackgroundColor="Transparent" CommandParameter="{Binding Title}" Clicked="Button_Clicked"   TextColor="Red" Image="outline_delete_outline_black_18.png"/>
                                     </Grid>
                                 </Frame>
                             </ViewCell.View>

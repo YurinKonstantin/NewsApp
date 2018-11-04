@@ -52,10 +52,10 @@
                     </Grid.RowDefinitions>
                     <Frame Padding="0" Grid.Row="1" CornerRadius="20">
                     <StackLayout>
-                            <Button Text="Сохранить" HorizontalOptions="Start" Margin="20,0,0,0" Image="baseline_save_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
-                            <Button Text="Открыть" HorizontalOptions="Start" Margin="20,0,0,0" BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
-                            <Button Text="Прочесть" HorizontalOptions="Start" Margin="20,0,0,0" BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
-                    <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,8,16,0"/>
+                            <Button Text="Сохранить в 'Закладки'" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_bookmark_border_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
+                            <Button Text="Открыть новость на сайте" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_launch_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
+                            <Button Text="Прослушать краткое описание" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_record_voice_over_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
+                            <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,8,16,0" Image="outline_home_black_18.png" />
                     </StackLayout>
                     </Frame>
                 </Grid>

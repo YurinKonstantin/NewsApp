@@ -4,17 +4,14 @@
              x:Class="NewsApp.Page24hors" Title="Топ 24 часа"  NavigationPage.HasNavigationBar="False"  BackgroundImage="rain.jpg" x:Name="content">
    
     <ContentPage.Content>
-        <Grid>
-            <ListView x:Name="phonesList"
-               HasUnevenRows="True"
-              SeparatorColor="Transparent" SelectionMode="None" 
-                       IsPullToRefreshEnabled="true" Refreshing="OnRefresh"
-              ItemTapped="OnItemTapped"  CachingStrategy="RecycleElement"
-                 >
+        <Grid >
+   
+            <ListView x:Name="phonesList"  HasUnevenRows="True" SeparatorColor="Transparent" SelectionMode="None"  IsPullToRefreshEnabled="true" Refreshing="OnRefresh"
+              ItemTapped="OnItemTapped"  CachingStrategy="RecycleElement"  >
+               
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-
                             <ViewCell.View>
                                 <Frame   Margin="8,6,8,2" Padding="0" CornerRadius="20" HasShadow="True" FlowDirection="MatchParent"  OutlineColor="White" BackgroundColor="#CCFFFFFF" >
                                     <Grid >
@@ -32,7 +29,6 @@
                                         <Label Grid.Row="2" Margin="8,0,8,0"   Text="{Binding Description}" FontFamily="Arial" IsVisible="{Binding FigDesc}" TextColor="Black" FontSize="Small" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap" VerticalTextAlignment="End" />
                                         <Label Grid.Row="3" Margin="8,0,0,6"  Text="{Binding istochnic}"   FontFamily="Arial" TextColor="Black" FontSize="Small" HorizontalOptions="Start" HorizontalTextAlignment="Start" />
                                         <Button Grid.Row="3"  IsVisible="{Binding ButShow}" HorizontalOptions="End" BackgroundColor="Transparent" CommandParameter="{Binding Title}" Clicked="Button_Clicked"   Margin="0, -10, -8, -4" Padding="-2" TextColor="Blue" Image="outline_more_horiz_black_24.png"/>
-
                                     </Grid>
                                 </Frame>
                             </ViewCell.View>
@@ -52,14 +48,15 @@
                     </Grid.RowDefinitions>
                     <Frame Padding="0" Grid.Row="1" CornerRadius="20">
                         <StackLayout>
-                            <Button Text="Сохранить" HorizontalOptions="Start" Margin="20,0,0,0" Image="baseline_save_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
-                            <Button Text="Открыть" HorizontalOptions="Start" Margin="20,0,0,0" BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
-                            <Button Text="Прочесть" HorizontalOptions="Start" Margin="20,0,0,0" BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
-                            <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,8,16,0"/>
+                            <Button Text="Сохранить в 'Закладки'" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_bookmark_border_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
+                            <Button Text="Открыть новость на сайте" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_launch_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
+                            <Button Text="Прослушать краткое описание" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_record_voice_over_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
+                            <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,8,16,0" Image="outline_home_black_18.png" />
                         </StackLayout>
                     </Frame>
                 </Grid>
             </Frame>
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

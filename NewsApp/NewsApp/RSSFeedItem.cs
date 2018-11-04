@@ -15,6 +15,7 @@ namespace NewsApp
         public string Enclosure { get; set; }
         public string Category { get; set; }
         public Double h { get; set; }
+        public Double w { get; set; }
         public string collor { get; set; }
         string _istochnic = String.Empty;
         public string istochnic
