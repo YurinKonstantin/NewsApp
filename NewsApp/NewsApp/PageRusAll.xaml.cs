@@ -103,7 +103,7 @@ namespace NewsApp
                         {
 
 
-                            rSSFeedItems = await Task.Run(() => (MyComande.zagruzka1(new ClassIstochnik() { Urr = @"https://www.vedomosti.ru/rss/issue", Istochnik = "vedomosti.ru" }, metrics.Width)));
+                            rSSFeedItems = await Task.Run(() => (MyComande.zagruzka1(new ClassIstochnik() { Urr = @"https://www.vedomosti.ru/rss/issue", Istochnik = "Vedomosti.ru" }, metrics.Width)));
                             int poz = 0;
                             if (rSSFeedItems.Count != 0)
                             {
@@ -164,14 +164,17 @@ namespace NewsApp
 
                 if (selectedPhone.Enclosure != null)
                 {
-                    if (selectedPhone.istochnic == "Lenta.ru")
+
+                    if (!ClassSetUpUser.MyWebShow)
                     {
-                        await Navigation.PushAsync(new PageMyWeb(selectedPhone.Link));
+                        await Navigation.PushAsync(new PageMyWeb(selectedPhone));
                     }
                     else
                     {
                         await Navigation.PushAsync(new PageWebView(selectedPhone.Link));
                     }
+
+
 
                 }
             //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));

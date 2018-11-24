@@ -104,14 +104,16 @@ namespace NewsApp
 
                 if (selectedPhone.Enclosure != null)
                 {
-                    if (selectedPhone.istochnic == "Lenta.ru")
+
+                    if (!ClassSetUpUser.MyWebShow)
                     {
-                        await Navigation.PushAsync(new PageMyWeb(selectedPhone.Link));
+                        await Navigation.PushAsync(new PageMyWeb(selectedPhone));
                     }
                     else
                     {
                         await Navigation.PushAsync(new PageWebView(selectedPhone.Link));
                     }
+
 
                 }
             //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));

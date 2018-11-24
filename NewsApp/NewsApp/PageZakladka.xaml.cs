@@ -85,8 +85,19 @@ namespace NewsApp
             if (selectedPhone != null)
 
                 if (selectedPhone.Enclosure != null)
+                {
+
+
                     //   await Navigation.PushModalAsync(new Page4(selectedPhone.Link));
-                    await Navigation.PushAsync(new PageWebView(selectedPhone.Link));
+                    if (!ClassSetUpUser.MyWebShow)
+                    {
+                        await Navigation.PushAsync(new PageMyWeb(selectedPhone));
+                    }
+                    else
+                    {
+                        await Navigation.PushAsync(new PageWebView(selectedPhone.Link));
+                    }
+                }
 
 
         }

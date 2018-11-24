@@ -17,6 +17,7 @@ namespace NewsApp
 			InitializeComponent ();
             fig.On = ClassSetUpUser.FigShow;
             opis.On = ClassSetUpUser.FigDesc;
+            MyWeb.On = ClassSetUpUser.MyWebShow;
             
 		}
 
@@ -24,16 +25,22 @@ namespace NewsApp
 
      
 
-        private void SwitchCell_OnChanged(object sender, ToggledEventArgs e)
+        private async void SwitchCell_OnChanged(object sender, ToggledEventArgs e)
         {
             ClassSetUpUser.FigShow = e.Value;
-            ClassSetUpUser.SaveSetUp();
+          await  ClassSetUpUser.SaveSetUp();
         }
 
-        private void opis_OnChanged(object sender, ToggledEventArgs e)
+        private async void opis_OnChanged(object sender, ToggledEventArgs e)
         {
             ClassSetUpUser.FigDesc = e.Value;
-            ClassSetUpUser.SaveSetUp();
+           await ClassSetUpUser.SaveSetUp();
+        }
+
+        private async void MyWeb_OnChanged(object sender, ToggledEventArgs e)
+        {
+            ClassSetUpUser.MyWebShow = e.Value;
+           await ClassSetUpUser.SaveSetUp();
         }
     }
 }

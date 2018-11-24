@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NewsApp
 {
@@ -19,6 +20,7 @@ namespace NewsApp
                 figShow = value;
             }
         }
+        
       static  bool figDesc = true;
       static  public bool FigDesc
         {
@@ -31,15 +33,27 @@ namespace NewsApp
                 figDesc = value;
             }
         }
-       static public void SaveSetUp()
+        static bool myWebShow = true;
+        static public bool MyWebShow
+        {
+            get
+            {
+                return myWebShow;
+            }
+            set
+            {
+                myWebShow = value;
+            }
+        }
+        static async public Task SaveSetUp()
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SetUp.txt");
             bool doesExist = File.Exists(fileName);
             string text = null;
-            text = FigShow.ToString() + "\n"+ FigDesc.ToString();
+            text = FigShow.ToString() + "\n"+ FigDesc.ToString() + "\n" + MyWebShow.ToString();
             File.WriteAllText(fileName, text);
         }
-       static public void OpenSetUp()
+       static async public Task OpenSetUp()
         {
             try
             {
@@ -53,6 +67,14 @@ namespace NewsApp
                         string[] line = text.Split('\n');
                         FigShow = Convert.ToBoolean(line[0]);
                         figDesc = Convert.ToBoolean(line[1]);
+                        if(line.Length>2)
+                        {
+                            MyWebShow = Convert.ToBoolean(line[2]);
+                        }
+                        else
+                        {
+                           await SaveSetUp();
+                        }
                     }
                     catch
                     {
@@ -61,7 +83,7 @@ namespace NewsApp
                 }
                 else
                 {
-                    SaveSetUp();
+                   await SaveSetUp();
                 }
             }
             catch
