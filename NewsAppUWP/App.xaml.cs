@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace NewsApp.UWP
+namespace NewsAppUWP
 {
     /// <summary>
     /// Обеспечивает зависящее от конкретного приложения поведение, дополняющее класс Application по умолчанию.
@@ -39,41 +39,39 @@ namespace NewsApp.UWP
         /// <param name="e">Сведения о запросе и обработке запуска.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-
             Frame rootFrame = Window.Current.Content as Frame;
 
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
+            // Не повторяйте инициализацию приложения, если в окне уже имеется содержимое,
+            // только обеспечьте активность окна
             if (rootFrame == null)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
+                // Создание фрейма, который станет контекстом навигации, и переход к первой странице
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
-                Xamarin.Forms.Forms.Init(e);
-
+                Xamarin.Forms.Forms.Init(e); // requires the `e` parameter
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    //TODO: Загрузить состояние из ранее приостановленного приложения
                 }
 
-                // Place the frame in the current Window
+                // Размещение фрейма в текущем окне
                 Window.Current.Content = rootFrame;
             }
 
-            if (rootFrame.Content == null)
+            if (e.PrelaunchActivated == false)
             {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                if (rootFrame.Content == null)
+                {
+                    // Если стек навигации не восстанавливается для перехода к первой странице,
+                    // настройка новой страницы путем передачи необходимой информации в качестве параметра
+                    // параметр
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                }
+                // Обеспечение активности текущего окна
+                Window.Current.Activate();
             }
-            // Ensure the current window is active
-            Window.Current.Activate();
         }
-
 
         /// <summary>
         /// Вызывается в случае сбоя навигации на определенную страницу
