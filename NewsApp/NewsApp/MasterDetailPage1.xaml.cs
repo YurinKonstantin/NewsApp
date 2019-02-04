@@ -15,21 +15,23 @@ namespace NewsApp
         public MasterDetailPage1()
         {
             InitializeComponent();
-            ClassSetUpUser.OpenSetUp();
+           
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+           await ClassSetUpUser.OpenSetUp();
 
+        }
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MasterDetailPage1MenuItem;
             if (item == null)
                 return;
-            
-
                  var page = (Page)Activator.CreateInstance(item.TargetType);
                // var page=new MasterDetailPage1Detail();
                 page.Title = item.Title;
-
                 Detail = new NavigationPage(page);
             IsPresented = false;
           MasterPage.ListView.SelectedItem = null;

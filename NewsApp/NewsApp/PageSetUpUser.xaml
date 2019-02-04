@@ -15,12 +15,11 @@
                     <TableSection>
                         <SwitchCell x:Name="fig" Text="Фото" OnChanged="SwitchCell_OnChanged" Height="48"/>
                         <SwitchCell Text="Краткое описание"  x:Name="opis" OnChanged="opis_OnChanged" Height="48"/>
-                        <TextCell Height="22"/>
                         <SwitchCell Text="Исходное представление статьи"  x:Name="MyWeb" OnChanged="MyWeb_OnChanged" Height="48"/>
-                        <TextCell Height="22"/>
                     </TableSection>
                 </TableRoot>
             </TableView>
+      
         </StackLayout>
     </Frame>
 </ContentPage>

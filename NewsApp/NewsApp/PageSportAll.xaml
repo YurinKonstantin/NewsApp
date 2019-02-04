@@ -15,7 +15,7 @@
                         <ViewCell >
 
                             <ViewCell.View>
-                                <Frame   Margin="8,6,8,2" Padding="0" CornerRadius="20" HasShadow="True" FlowDirection="MatchParent"  OutlineColor="White" BackgroundColor="#CCFFFFFF" >
+                                <Frame   Margin="4,4,4,0" Padding="0" CornerRadius="20" HasShadow="True" FlowDirection="MatchParent"  OutlineColor="White" BackgroundColor="#CCFFFFFF" >
                                     <Grid >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -50,12 +50,31 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Frame Padding="0" Grid.Row="1" CornerRadius="20">
-                        <StackLayout>
-                            <Button Text="Сохранить в 'Закладки'" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_bookmark_border_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
-                            <Button Text="Открыть новость на сайте" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_launch_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
-                            <Button Text="Прослушать краткое описание" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_record_voice_over_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
-                            <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,8,16,0" Image="outline_home_black_18.png" />
-                        </StackLayout>
+                        <ScrollView>
+                            <StackLayout>
+
+                                <Grid Margin="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Frame VerticalOptions="Start"  Padding="0" BackgroundColor="Transparent" CornerRadius="20"  HorizontalOptions="Center" x:Name="ImageFrame" WidthRequest="{Binding Source={x:Reference Name=phonesList}, Path=Width}">
+                                        <Image  x:Name="Image" Aspect="AspectFill"  />
+                                    </Frame>
+                                    <Label Grid.Row="1" Margin="8,0,8,0"  TextColor="Black" Text="Выводится заголовыок выбранной новости" x:Name="TextTitle" FontAttributes="Bold"   FontFamily="Arial" FontSize="Medium" HorizontalOptions="Start" LineBreakMode="CharacterWrap" />
+                                    <Label Grid.Row="2" Margin="8,0,8,0" x:Name="TextDesc"   Text="Описание новости" FontFamily="Arial" TextColor="Black" FontSize="Small" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap" VerticalTextAlignment="End" />
+                                    <Label Grid.Row="3" Margin="8,0,0,6"  Text="Источник" x:Name="TextIst"   FontFamily="Arial" TextColor="Black" FontSize="Small" HorizontalOptions="Start" HorizontalTextAlignment="Start" />
+                                </Grid>
+                                <Button x:Name="ButStop" Image="baseline_voice_over_off_black_18.png"  Clicked="ButStop_Clicked" IsVisible="False" HorizontalOptions="Center" />
+                                <Button Text="Сохранить в 'Закладки'" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_bookmark_border_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_2"/>
+                                <Button Text="Открыть новость на сайте" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_launch_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_3"/>
+                                <Button Text="Прослушать краткое описание" HorizontalOptions="Start" Margin="20,0,0,0" Image="outline_record_voice_over_black_18.png"  BackgroundColor="Transparent" Clicked="Button_Clicked_4"/>
+                                <Button Text="Отмена" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,4,16,0" Image="outline_home_black_18.png" />
+                            </StackLayout>
+                        </ScrollView>
                     </Frame>
                 </Grid>
             </Frame>

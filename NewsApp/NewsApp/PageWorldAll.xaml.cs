@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xamarin.Essentials;
@@ -19,7 +20,7 @@ namespace NewsApp
 		public PageWorldAll ()
 		{
 			InitializeComponent ();
-            Col1.Add(new RSSFeedItem() { Title = "Загрузка новостей", FigShow = false, Description = "Мы подготавлимаем новости для вас", ButShow = false });
+         
             phonesList.ItemsSource = Col1;
             MyComande = new ClassComande();
         }
@@ -29,9 +30,18 @@ namespace NewsApp
         {
             base.OnAppearing();
             frame.IsVisible = false;
-            if (Col1.Count <= 1)
+            try
             {
-               await Task.Run(() => zagruzka1());
+                Col1.Add(new RSSFeedItem() { Title = "Загрузка новостей", FigShow = false, Description = "Мы подготавлимаем новости для вас", ButShow = false });
+                if (Col1.Count <= 1)
+                {
+                    await Task.Run(() => zagruzka1());
+
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
         ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
@@ -165,6 +175,12 @@ namespace NewsApp
             {
                 note1 = bindableObject.BindingContext as RSSFeedItem;
             }
+
+            Image.Source = note1.Enclosure;
+            TextTitle.Text = note1.Title;
+            TextDesc.Text = note1.Description;
+            TextIst.Text = note1.istochnic;
+            //  ImageFrame.HeightRequest = note1.h;
             frame.IsVisible = true;
 
         }
@@ -209,7 +225,17 @@ namespace NewsApp
             {
                 if (note1 != null)
                     if (note1.Enclosure != null)
-                        await Navigation.PushAsync(new PageWebView(note1.Link));
+                    {
+                        if (!ClassSetUpUser.MyWebShow)
+                        {
+                            await Navigation.PushAsync(new PageMyWeb(note1));
+                        }
+                        else
+                        {
+                            await Navigation.PushAsync(new PageWebView(note1.Link));
+                        }
+                    }
+
             }
             catch (Exception)
             {
@@ -221,12 +247,23 @@ namespace NewsApp
             }
 
         }
+        CancellationTokenSource cts;
+        public void CancelSpeech()
+        {
+            if (cts?.IsCancellationRequested ?? false)
+                return;
 
+            cts.Cancel();
+        }
         private async void Button_Clicked_4(object sender, EventArgs e)
         {
             try
             {
-                DependencyService.Get<Interface1>().Speak(note1.Description);
+                ButStop.IsVisible = true;
+                //  DependencyService.Get<Interface1>().Speak(note1.Description);
+                await SpeakNowDefaultSettings(note1.Description);
+                ButStop.IsVisible = false;
+
             }
             catch (Exception)
             {
@@ -234,8 +271,40 @@ namespace NewsApp
             }
             finally
             {
-                frame.IsVisible = false;
+                // frame.IsVisible = false;
             }
+        }
+        public async Task SpeakNowDefaultSettings(string text)
+        {
+            var locales = await TextToSpeech.GetLocalesAsync();
+
+            // Grab the first locale
+            var locale = locales.FirstOrDefault();
+
+            var settings = new SpeakSettings()
+            {
+                Volume = 10 / 14,
+                Pitch = 1,
+                Locale = locale
+            };
+            cts = new CancellationTokenSource();
+            await TextToSpeech.SpeakAsync(text, cancelToken: cts.Token);
+
+            // This method will block until utterance finishes.
+        }
+
+        public void SpeakNowDefaultSettings2(string text)
+        {
+            TextToSpeech.SpeakAsync(text).ContinueWith((t) =>
+            {
+                // Logic that will run after utterance finishes.
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void ButStop_Clicked(object sender, EventArgs e)
+        {
+            CancelSpeech();
         }
     }
 }
