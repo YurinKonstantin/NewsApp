@@ -16,7 +16,7 @@
                     <ViewCell >
                         
                         <ViewCell.View>
-                                <Frame   Margin="4,4,4,0" Padding="0" CornerRadius="20" HasShadow="True" FlowDirection="MatchParent"  OutlineColor="White" BackgroundColor="#CCFFFFFF" >
+                                <Frame   Margin="2,2,2,0" Padding="0" CornerRadius="20" HasShadow="True" FlowDirection="MatchParent"  OutlineColor="White" BackgroundColor="#CCFFFFFF" >
                                 <Grid >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>

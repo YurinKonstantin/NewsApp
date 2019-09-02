@@ -24,7 +24,7 @@ namespace NewsApp
             phonesList.ItemsSource = Col1;
             MyComande = new ClassComande();
         }
-        ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
+      DisplayInfo metrics = DeviceDisplay.MainDisplayInfo;
         ClassComande MyComande { get; set; }
         protected async override void OnAppearing()
         {
@@ -247,7 +247,7 @@ namespace NewsApp
             // Grab the first locale
             var locale = locales.FirstOrDefault();
 
-            var settings = new SpeakSettings()
+            var settings = new SpeechOptions()
             {
                 Volume = 10 / 14,
                 Pitch = 1,

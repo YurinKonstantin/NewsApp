@@ -11,8 +11,9 @@ namespace NewsApp
 		{
 			InitializeComponent();
            MainPage = new NavigationPage(new MasterDetailPage1());
-          //  MainPage = new MasterDetailPage1();
-		}
+  
+            //  MainPage = new MasterDetailPage1();
+        }
 
 		protected override void OnStart ()
 		{

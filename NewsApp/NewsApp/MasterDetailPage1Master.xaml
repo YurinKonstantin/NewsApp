@@ -3,9 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.MasterDetailPage1Master"
              Title="Master" >
-    <Grid>
- 
-        <ListView x:Name="MenuItemsListView" 
+    <Grid Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout  BackgroundColor="#1B3147" x:Name="ss" Margin="-8" >
+
+            <Label x:Name="labTemp" TextColor="White" FontSize="22" Margin="0,18,18,0" HorizontalOptions="End"/>
+            <Label x:Name="labGorod" TextColor="White" FontSize="14" Margin="0,0,18,0" HorizontalOptions="End"/>
+  
+          
+
+        </StackLayout>
+     
+        <ListView x:Name="MenuItemsListView" Grid.Row="1"  
              
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}" SeparatorVisibility="Default">
@@ -17,13 +29,13 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Column="1" Grid.Row="2" Text="Новости" TextColor="White" FontSize="24" Style="{DynamicResource SubtitleStyle}"/>
-
+                 
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
@@ -40,6 +52,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+           
         </ListView>
       
     </Grid>

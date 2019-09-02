@@ -24,16 +24,22 @@ namespace NewsApp.Droid
             Instance = this;
             Forms.SetFlags("FastRenderers_Experimental");
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle); // add this line to your code, it may also be called: bundle
+
             LoadApplication(new App());
         }
         protected override void OnStart()
         {
             base.OnStart();
 
-
-
         }
-      
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
     }
 }
 

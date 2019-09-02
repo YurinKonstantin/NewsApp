@@ -27,7 +27,7 @@ namespace NewsApp
             phonesList.ItemsSource = Col1;
             MyComande = new ClassComande();
         }
-        ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
+      
         ClassComande MyComande { get; set; }
         protected async override void OnAppearing()
         {
@@ -58,7 +58,7 @@ namespace NewsApp
         }
         public async Task zagruzka1(string titlestring)
         {
-
+            var metrics = DeviceDisplay.MainDisplayInfo;
             try
             {
                 var current = Connectivity.NetworkAccess;
@@ -302,7 +302,7 @@ await Navigation.PushAsync(new PageMyWeb(selectedPhone));
             // Grab the first locale
             var locale = locales.FirstOrDefault();
 
-            var settings = new SpeakSettings()
+            var settings = new SpeechOptions()
             {
                 Volume = 10 / 14,
                 Pitch = 1,

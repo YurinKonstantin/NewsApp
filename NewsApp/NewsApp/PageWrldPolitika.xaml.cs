@@ -26,7 +26,7 @@ namespace NewsApp
             MyComande = new ClassComande();
 
         }
-        ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
+        DisplayInfo metrics = DeviceDisplay.MainDisplayInfo;
         ClassComande MyComande { get; set; }
         public ObservableCollection<RSSFeedItem> Col1 = new ObservableCollection<RSSFeedItem>();
         protected async override void OnAppearing()
@@ -272,7 +272,7 @@ namespace NewsApp
             // Grab the first locale
             var locale = locales.FirstOrDefault();
 
-            var settings = new SpeakSettings()
+            var settings = new SpeechOptions()
             {
                 Volume = 10 / 14,
                 Pitch = 1,

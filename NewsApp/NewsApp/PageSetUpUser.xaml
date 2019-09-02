@@ -2,24 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.PageSetUpUser" Title="Назад">
-    <Frame CornerRadius="20">
-        <StackLayout HeightRequest="120">
-            <Label Text="Содиржимое ленты новостей"
-               FontSize="Medium"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
 
-            <TableView Intent="Form"
-                   Margin="10, 0">
-                <TableRoot>
-                    <TableSection>
-                        <SwitchCell x:Name="fig" Text="Фото" OnChanged="SwitchCell_OnChanged" Height="48"/>
-                        <SwitchCell Text="Краткое описание"  x:Name="opis" OnChanged="opis_OnChanged" Height="48"/>
-                        <SwitchCell Text="Исходное представление статьи"  x:Name="MyWeb" OnChanged="MyWeb_OnChanged" Height="48"/>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
-      
-        </StackLayout>
-    </Frame>
+    <TableView  Intent="Settings" VerticalOptions="Start"
+                   Margin="10, 0,0,0">
+        <TableRoot >
+            <TableSection Title="Содиржимое ленты новостей" TextColor="Black">
+                <SwitchCell x:Name="fig" Text="Фото" OnChanged="SwitchCell_OnChanged" Height="48"/>
+                <SwitchCell Text="Краткое описание"  x:Name="opis" OnChanged="opis_OnChanged" Height="48"/>
+                <SwitchCell Text="Исходное представление статьи"  x:Name="MyWeb" OnChanged="MyWeb_OnChanged" Height="48"/>
+            </TableSection>
+            <TableSection Title="Информация о погоде" TextColor="Black">
+                <SwitchCell x:Name="gps" Text="Прогноз погоды" OnChanged="Gps_OnChanged" On="True" Height="48"/>
+           
+                
+               
+            </TableSection>
+        </TableRoot>
+    </TableView>
+
 </ContentPage>

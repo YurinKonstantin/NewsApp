@@ -43,7 +43,7 @@ namespace NewsApp
 
             }
         }
-        ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
+      DisplayInfo metrics = DeviceDisplay.MainDisplayInfo;
 
         async void OnRefresh(object sender, EventArgs e)
         {
@@ -331,7 +331,7 @@ namespace NewsApp
             // Grab the first locale
             var locale = locales.FirstOrDefault();
 
-            var settings = new SpeakSettings()
+            var settings = new SpeechOptions()
             {
                 Volume = 10 / 14,
                 Pitch = 1,

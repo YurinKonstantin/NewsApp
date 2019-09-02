@@ -17,5 +17,8 @@ namespace NewsApp
         public string Title { get; set; }
 
         public Type TargetType { get; set; }
+        public string Gorod { get; set; }
+        public string Temp { get; set; }
+        public string ImgTemp { get; set; }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+//PofodaShow - показывает прогноз погоды
 namespace NewsApp
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -18,8 +19,9 @@ namespace NewsApp
             fig.On = ClassSetUpUser.FigShow;
             opis.On = ClassSetUpUser.FigDesc;
             MyWeb.On = ClassSetUpUser.MyWebShow;
-            
-		}
+           // var myValue = Preferences.Get("PofodaShow", "True");
+
+        }
 
     
 
@@ -41,6 +43,17 @@ namespace NewsApp
         {
             ClassSetUpUser.MyWebShow = e.Value;
            await ClassSetUpUser.SaveSetUp();
+        }
+
+        private void Fig_OnChanged(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private async void Gps_OnChanged(object sender, ToggledEventArgs e)
+        {
+            await DisplayAlert("В файле ошибка ", e.Value.ToString(), "OK");
+            Preferences.Set("PofodaShow", e.Value);
         }
     }
 }
